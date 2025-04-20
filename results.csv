@@ -1,19 +1,180 @@
-filename,total_value,total_weight,duration_ms,selected_items
-ks_10000_0,1.09987e+06,1e+06,0.441,3003 568 7055 3023 8034 9756 1824 7577 2168 2946 5620 7234 48 6535 9308 1942 9117 6113
-ks_1000_0,109869,99972,0.0333,642 519 336 59 553 525 801 115 504 485 703 394 627 889 689 210 506 384 929
-ks_100_0,90000,90001,0.0032,0
-ks_100_1,1.33364e+06,3.19077e+06,0.0037,30 61 16 60 37 3 92
-ks_100_2,10892,9999,0.0036,34 30 86 56 46 41 62 69 7 88
-ks_19_0,11981,30162,0.0009,13 3 2 5
-ks_200_0,100062,99781,0.0044,198 196 168
-ks_200_1,1.10344e+06,2.64008e+06,0.0069,174 52 79 90 113 197
-ks_300_0,1.68858e+06,4.04007e+06,0.0097,174 52 254 79 40 228 107 86 238
-ks_30_0,90000,90001,0.0017,0
-ks_400_0,3.96681e+06,9.48593e+06,0.0134,374 376 379 377 381 53 76
-ks_40_0,96474,96362,0.0012,38 36 34 32 30 28 26
-ks_45_0,23974,58148,0.0023,26 32
-ks_4_0,18,9,0.0004,0 1
-ks_500_0,54891,49972,0.0164,26 295 30 91 168 205 52 424 475 223 335 31 51
-ks_50_0,141956,341012,0.0026,22 19 33 0 6
-ks_50_1,5326,4980,0.0027,16 18 20 31 38 1 5 2 14 0 22 25 39
-ks_60_0,90000,90001,0.0022,0
+File: ks_10000_0   Algorithm: ratio
+  Total value: 1099870   Total weight: 1000000   Time: 2 ms
+  Selected values: 92264, 76140, 109027, 177323, 69271, 179749, 61650, 108657, 181206, 41755, 327, 437, 706, 244, 945, 87, 74, 8
+  Selected weights: 83877, 69221, 99123, 161215, 62979, 163423, 56051, 98789, 164754, 37964, 298, 399, 649, 225, 873, 81, 70, 9
+
+File: ks_10000_0   Algorithm: value_over_W
+  Total value: 1094968   Total weight: 999989   Time: 2 ms
+  Selected values: 219380, 218870, 218215, 217655, 217651, 3189, 8
+  Selected weights: 199630, 199511, 199151, 199062, 199549, 3077, 9
+
+File: ks_1000_0   Algorithm: ratio
+  Total value: 109869   Total weight: 99972   Time: 0 ms
+  Selected values: 3439, 13710, 15347, 6646, 14781, 6064, 2295, 12721, 9142, 11450, 5247, 5739, 303, 438, 1531, 253, 256, 506, 1
+  Selected weights: 3127, 12469, 13958, 6045, 13446, 5517, 2088, 11574, 8318, 10424, 4777, 5227, 276, 399, 1395, 231, 234, 466, 1
+
+File: ks_1000_0   Algorithm: value_over_W
+  Total value: 107768   Total weight: 99991   Time: 0 ms
+  Selected values: 21495, 21016, 20988, 20948, 20925, 2395, 1
+  Selected weights: 19995, 19978, 19301, 19187, 19132, 2397, 1
+
+File: ks_100_0   Algorithm: ratio
+  Total value: 90000   Total weight: 90001   Time: 0 ms
+  Selected values: 90000
+  Selected weights: 90001
+
+File: ks_100_0   Algorithm: value_over_W
+  Total value: 90000   Total weight: 90001   Time: 0 ms
+  Selected values: 90000
+  Selected weights: 90001
+
+File: ks_100_1   Algorithm: ratio
+  Total value: 1333635   Total weight: 3190770   Time: 0 ms
+  Selected values: 565204, 565204, 147380, 47728, 7150, 969, 0
+  Selected weights: 1351508, 1351508, 352660, 114556, 17400, 2638, 500
+
+File: ks_100_1   Algorithm: value_over_W
+  Total value: 1333671   Total weight: 3190742   Time: 0 ms
+  Selected values: 565204, 565204, 174684, 21004, 7463, 112
+  Selected weights: 1351508, 1351508, 418068, 50708, 18226, 724
+
+File: ks_100_2   Algorithm: ratio
+  Total value: 10892   Total weight: 9999   Time: 0 ms
+  Selected values: 1970, 1842, 882, 1652, 480, 1295, 2114, 43, 473, 141
+  Selected weights: 1794, 1680, 806, 1511, 440, 1192, 1958, 40, 442, 136
+
+File: ks_100_2   Algorithm: value_over_W
+  Total value: 10547   Total weight: 9999   Time: 0 ms
+  Selected values: 2114, 2055, 2046, 1970, 1944, 362, 56
+  Selected weights: 1958, 1960, 1902, 1794, 1952, 378, 55
+
+File: ks_19_0   Algorithm: ratio
+  Total value: 11981   Total weight: 30162   Time: 0 ms
+  Selected values: 3878, 4136, 2945, 1022
+  Selected weights: 9656, 10372, 7390, 2744
+
+File: ks_19_0   Algorithm: value_over_W
+  Total value: 12066   Total weight: 30532   Time: 0 ms
+  Selected values: 4136, 3878, 2945, 1107
+  Selected weights: 10372, 9656, 7390, 3114
+
+File: ks_200_0   Algorithm: ratio
+  Total value: 100062   Total weight: 99781   Time: 0 ms
+  Selected values: 34698, 34446, 30918
+  Selected weights: 34599, 34348, 30834
+
+File: ks_200_0   Algorithm: value_over_W
+  Total value: 90001   Total weight: 90000   Time: 0 ms
+  Selected values: 90001
+  Selected weights: 90000
+
+File: ks_200_1   Algorithm: ratio
+  Total value: 1103442   Total weight: 2640084   Time: 0 ms
+  Selected values: 387480, 395124, 170844, 132868, 16812, 314
+  Selected weights: 926660, 944948, 408788, 318036, 40524, 1128
+
+File: ks_200_1   Algorithm: value_over_W
+  Total value: 1103484   Total weight: 2639868   Time: 0 ms
+  Selected values: 395124, 387480, 226844, 85864, 8172
+  Selected weights: 944948, 926660, 542788, 205628, 19844
+
+File: ks_300_0   Algorithm: ratio
+  Total value: 1688584   Total weight: 4040068   Time: 0 ms
+  Selected values: 387480, 395124, 236380, 170844, 226844, 166516, 83452, 19916, 2028
+  Selected weights: 926660, 944948, 565460, 408788, 542788, 398532, 199804, 47932, 5156
+
+File: ks_300_0   Algorithm: value_over_W
+  Total value: 1688432   Total weight: 4039664   Time: 0 ms
+  Selected values: 395124, 387480, 236380, 226844, 170844, 166516, 104036, 1208
+  Selected weights: 944948, 926660, 565460, 542788, 408788, 398532, 249172, 3316
+
+File: ks_30_0   Algorithm: ratio
+  Total value: 90000   Total weight: 90001   Time: 0 ms
+  Selected values: 90000
+  Selected weights: 90001
+
+File: ks_30_0   Algorithm: value_over_W
+  Total value: 90000   Total weight: 90001   Time: 0 ms
+  Selected values: 90000
+  Selected weights: 90001
+
+File: ks_400_0   Algorithm: ratio
+  Total value: 3966813   Total weight: 9485926   Time: 0 ms
+  Selected values: 1365820, 1445900, 492496, 501060, 151320, 10196, 21
+  Selected weights: 3265540, 3457100, 1177692, 1198220, 362140, 24692, 542
+
+File: ks_400_0   Algorithm: value_over_W
+  Total value: 3966825   Total weight: 9485850   Time: 0 ms
+  Selected values: 1445900, 1417728, 562272, 501060, 39844, 21
+  Selected weights: 3457100, 3389756, 1344644, 1198220, 95588, 542
+
+File: ks_40_0   Algorithm: ratio
+  Total value: 96474   Total weight: 96362   Time: 0 ms
+  Selected values: 14538, 14286, 14034, 13782, 13530, 13278, 13026
+  Selected weights: 14519, 14268, 14017, 13766, 13515, 13264, 13013
+
+File: ks_40_0   Algorithm: value_over_W
+  Total value: 90001   Total weight: 90000   Time: 0 ms
+  Selected values: 90001
+  Selected weights: 90000
+
+File: ks_45_0   Algorithm: ratio
+  Total value: 23974   Total weight: 58148   Time: 0 ms
+  Selected values: 16553, 7421
+  Selected weights: 40006, 18142
+
+File: ks_45_0   Algorithm: value_over_W
+  Total value: 23974   Total weight: 58148   Time: 0 ms
+  Selected values: 16553, 7421
+  Selected weights: 40006, 18142
+
+File: ks_4_0   Algorithm: ratio
+  Total value: 18   Total weight: 9   Time: 0 ms
+  Selected values: 10, 8
+  Selected weights: 5, 4
+
+File: ks_4_0   Algorithm: value_over_W
+  Total value: 19   Total weight: 11   Time: 0 ms
+  Selected values: 15, 4
+  Selected weights: 8, 3
+
+File: ks_500_0   Algorithm: ratio
+  Total value: 54891   Total weight: 49972   Time: 0 ms
+  Selected values: 1398, 10727, 7563, 9329, 5698, 8759, 5652, 1121, 4130, 247, 255, 12, 0
+  Selected weights: 1271, 9755, 6878, 8485, 5186, 7973, 5146, 1021, 3764, 228, 252, 12, 1
+
+File: ks_500_0   Algorithm: value_over_W
+  Total value: 54408   Total weight: 49998   Time: 0 ms
+  Selected values: 10738, 10727, 10619, 10584, 10517, 1223, 0
+  Selected weights: 9786, 9755, 9845, 9793, 9695, 1123, 1
+
+File: ks_50_0   Algorithm: ratio
+  Total value: 141956   Total weight: 341012   Time: 0 ms
+  Selected values: 96601, 29688, 13269, 1906, 492
+  Selected weights: 231302, 71276, 32038, 4912, 1484
+
+File: ks_50_0   Algorithm: value_over_W
+  Total value: 142156   Total weight: 341012   Time: 0 ms
+  Selected values: 96601, 45136, 419
+  Selected weights: 231302, 108372, 1338
+
+File: ks_50_1   Algorithm: ratio
+  Total value: 5326   Total weight: 4980   Time: 0 ms
+  Selected values: 838, 649, 180, 958, 196, 259, 126, 258, 757, 995, 23, 61, 26
+  Selected weights: 767, 595, 167, 889, 182, 242, 119, 244, 718, 945, 22, 62, 28
+
+File: ks_50_1   Algorithm: value_over_W
+  Total value: 5113   Total weight: 4994   Time: 0 ms
+  Selected values: 995, 961, 958, 930, 927, 342
+  Selected weights: 945, 938, 889, 948, 925, 349
+
+File: ks_60_0   Algorithm: ratio
+  Total value: 90000   Total weight: 90001   Time: 0 ms
+  Selected values: 90000
+  Selected weights: 90001
+
+File: ks_60_0   Algorithm: value_over_W
+  Total value: 90000   Total weight: 90001   Time: 0 ms
+  Selected values: 90000
+  Selected weights: 90001
+

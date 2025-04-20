@@ -1,74 +1,148 @@
 #include <bits/stdc++.h>
-using namespace std;
-using namespace std::chrono;
+#include <filesystem>
 
-
-struct knapsack_item {
-    int    id;
-    double weight;
-    double value;
-    double ratio;
+struct Item {
+    long long value;
+    long long weight;
 };
 
-// жадный алгоритм: сортирует по убыванию value/weight и отбирает пока помещается
-vector<int> greedy_knapsack(vector<knapsack_item>& items,
-                            double capacity,
-                            double& total_weight,
-                            double& total_value) {
-    for (auto& it : items)
-        it.ratio = it.value / it.weight;
+struct Result {
+    std::string filename;
+    std::string algorithm;        // "ratio" или "value_over_W"
+    long long total_value = 0;
+    long long total_weight = 0;
+    long long duration_ms = 0;
+    std::vector<long long> selected_values;
+    std::vector<long long> selected_weights;
+};
 
-    sort(items.begin(), items.end(),
-         [](const knapsack_item& a, const knapsack_item& b) {
-             return a.ratio > b.ratio;
-         });
+// Жадный выбор по заданному критерию
+Result greedy_knapsack(std::vector<Item> items,
+                       long long W,
+                       const std::string &file_name,
+                       const std::string &algo_name)
+{
+    auto start = std::chrono::high_resolution_clock::now();
 
-    total_weight = 0;
-    total_value  = 0;
-    vector<int> selected_ids;
+    if (algo_name == "ratio") {
+        std::sort(items.begin(), items.end(), [](auto &a, auto &b) {
+            double ra = double(a.value) / a.weight;
+            double rb = double(b.value) / b.weight;
+            if (ra == rb) return a.value > b.value;
+            return ra > rb;
+        });
+    } else { // value_over_W
+        double invW = 1.0 / double(W);
+        std::sort(items.begin(), items.end(), [&](auto &a, auto &b) {
+            return a.value * invW > b.value * invW;
+        });
+    }
 
-    for (const auto& it : items) {
-        if (total_weight + it.weight <= capacity) {
-            total_weight += it.weight;
-            total_value  += it.value;
-            selected_ids.push_back(it.id);
+    Result res{file_name, algo_name};
+    long long cur_w = 0;
+    for (auto &it : items) {
+        if (cur_w + it.weight <= W) {
+            cur_w += it.weight;
+            res.total_value  += it.value;
+            res.total_weight += it.weight;
+            res.selected_values.push_back(it.value);
+            res.selected_weights.push_back(it.weight);
         }
     }
-    return selected_ids;
+
+    auto end = std::chrono::high_resolution_clock::now();
+    res.duration_ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    return res;
 }
 
-int main() {
-    int n;
-    double capacity;
-    if (!(cin >> n >> capacity)) {
-        cerr << "error: invalid header (need N W)\n";
+int main(int argc, char *argv[]) {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+
+    // Путь к папке с данными
+    std::filesystem::path data_dir = "data";
+    if (argc >= 2) data_dir = argv[1];
+    if (!std::filesystem::exists(data_dir) || !std::filesystem::is_directory(data_dir)) {
+        std::cerr << "Directory not found: " << data_dir << "\n";
         return 1;
     }
 
-    vector<knapsack_item> items;
-    items.reserve(n);
-    for (int i = 0; i < n; ++i) {
-        double value, weight;
-        if (!(cin >> value >> weight)) {
-            cerr << "error: invalid item at line " << (i+2) << "\n";
-            return 1;
+    std::vector<Result> results;
+
+    // Обработка каждого файла в директории
+    for (auto &entry : std::filesystem::directory_iterator(data_dir)) {
+        if (!entry.is_regular_file()) continue;
+
+        std::ifstream fin(entry.path());
+        if (!fin.is_open()) {
+            std::cerr << "Cannot open file: " << entry.path() << "\n";
+            continue;
         }
-        items.push_back({ i, weight, value, 0.0 });
+
+        size_t N; long long W;
+        fin >> N >> W;
+        std::vector<Item> items(N);
+        for (size_t i = 0; i < N; ++i) {
+            fin >> items[i].value >> items[i].weight;
+        }
+
+        std::string fname = entry.path().filename().string();
+        results.push_back(greedy_knapsack(items, W, fname, "ratio"));
+        results.push_back(greedy_knapsack(items, W, fname, "value_over_W"));
     }
 
-    double total_weight, total_value;
-    // меряем время
-    auto t_start = high_resolution_clock::now();
-    auto chosen  = greedy_knapsack(items, capacity, total_weight, total_value);
-    auto t_end   = high_resolution_clock::now();
-    double duration_ms = chrono::duration<double, milli>(t_end - t_start).count();
+    // 1) Человекочитаемый вывод в консоль
+    for (auto &r : results) {
+        std::cout << "File: " << r.filename
+                  << "   Algorithm: " << r.algorithm << "\n";
+        std::cout << "  Total value: " << r.total_value
+                  << "   Total weight: " << r.total_weight
+                  << "   Time: " << r.duration_ms << " ms\n";
 
-    cout << "total_value "   << total_value   << "\n"
-         << "total_weight "  << total_weight  << "\n"
-         << "duration_ms "   << duration_ms   << "\n"
-         << "selected_items";
-    for (int id : chosen) cout << " " << id;
-    cout << "\n";
+        std::cout << "  Selected values: ";
+        for (size_t i = 0; i < r.selected_values.size(); ++i) {
+            if (i) std::cout << ", ";
+            std::cout << r.selected_values[i];
+        }
+        std::cout << "\n";
 
+        std::cout << "  Selected weights: ";
+        for (size_t i = 0; i < r.selected_weights.size(); ++i) {
+            if (i) std::cout << ", ";
+            std::cout << r.selected_weights[i];
+        }
+        std::cout << "\n\n";
+    }
+
+    // 2) Запись того же формата в results.csv
+    std::ofstream fout("results.csv");
+    if (!fout.is_open()) {
+        std::cerr << "Cannot open results.csv for writing\n";
+        return 1;
+    }
+
+    for (const auto &r : results) {
+        fout << "File: " << r.filename
+             << "   Algorithm: " << r.algorithm << "\n";
+        fout << "  Total value: " << r.total_value
+             << "   Total weight: " << r.total_weight
+             << "   Time: " << r.duration_ms << " ms\n";
+
+        fout << "  Selected values: ";
+        for (size_t i = 0; i < r.selected_values.size(); ++i) {
+            if (i) fout << ", ";
+            fout << r.selected_values[i];
+        }
+        fout << "\n";
+
+        fout << "  Selected weights: ";
+        for (size_t i = 0; i < r.selected_weights.size(); ++i) {
+            if (i) fout << ", ";
+            fout << r.selected_weights[i];
+        }
+        fout << "\n\n";
+    }
+
+    std::cerr << "Results written to results.csv\n";
     return 0;
 }
